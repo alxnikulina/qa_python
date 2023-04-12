@@ -30,7 +30,7 @@ class TestBooksCollector:
 
     def test_set_rating_cant_set_rating_for_unexisting_book(self):
         collector = BooksCollector()
-        collector.set_rating("Чапаев и Пустота", 5)
+        collector.set_book_rating("Чапаев и Пустота", 5)
         assert collector.get_book_rating("Чапаев и Пустота") is None
 
     def test_add_new_book_add_new_book(self):
@@ -41,8 +41,8 @@ class TestBooksCollector:
     def test_add_favorite_book_unadded_book_has_no_rating(self):
         collector = BooksCollector()
         book_name = "Generation П"
-        collector.add_favorite_book(book_name)
-        assert book_name not in collector.favorite_books
+        collector.add_book_in_favorites(book_name)
+        assert book_name not in collector.favorites
 
     def test_add_boo_in_favorites_add_book_in_favorites(self):
         collector = BooksCollector()
@@ -62,6 +62,6 @@ class TestBooksCollector:
         book_name = "Ampire V"
         collector.add_new_book(book_name)
         collector.set_book_rating(book_name, 5)
-        collector.add_to_favorites(book_name)
-        collector.remove_from_favorites(book_name)
-        assert book_name not in collector.
+        collector.add_book_in_favorites(book_name)
+        collector.delete_book_from_favorites(book_name)
+        assert book_name not in collector.books_rating
